@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexCart - E-Commerce Target QA Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/target_app.css">
+</head>
+<body>
+    <!-- Top Notification Bar -->
+    <div class="target-top-banner">
+        <span>🧪 Target Test Environment (E-Commerce Sandbox for Selenium & AI QA Automation)</span>
+        <div class="bug-toggle-wrapper">
+            <label for="bug-mode-toggle">Simulate Checkout Promo Bug: </label>
+            <input type="checkbox" id="bug-mode-toggle" title="When checked, promo codes fail to calculate 20% discount on order total">
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="store-header">
+        <div class="store-brand">
+            <span class="store-icon">⚡</span>
+            <h2>ApexCart</h2>
+        </div>
+
+        <div class="store-search-bar">
+            <input type="text" id="search-input" placeholder="Search wireless headphones, smart watches, tech..." />
+            <button id="search-btn" class="search-btn">Search</button>
+        </div>
+
+        <div class="store-actions">
+            <div id="user-auth-section">
+                <button id="nav-login-btn" class="btn-login-trigger">Sign In</button>
+                <div id="user-profile-badge" class="user-badge" style="display: none;">
+                    <span class="status-dot"></span>
+                    <span id="user-display-name">Welcome, Demo Tester</span>
+                    <button id="logout-btn" class="btn-logout">Logout</button>
+                </div>
+            </div>
+
+            <button id="cart-icon-btn" class="btn-cart">
+                🛒 Cart (<span id="cart-badge-count">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Store Content -->
+    <main class="store-main">
+        <section class="store-hero">
+            <div class="hero-text">
+                <h1>Next-Gen Tech Essentials</h1>
+                <p>Curated gear tested for reliability and peak performance.</p>
+            </div>
+            <div class="category-pills">
+                <button class="cat-pill active" data-cat="all">All Products</button>
+                <button class="cat-pill" data-cat="audio">Audio</button>
+                <button class="cat-pill" data-cat="wearables">Wearables</button>
+                <button class="cat-pill" data-cat="accessories">Accessories</button>
+            </div>
+        </section>
+
+        <!-- Product Grid -->
+        <section class="product-grid" id="product-grid">
+            <!-- Rendered dynamically by JS -->
+        </section>
+
+        <div id="no-results-msg" class="no-results" style="display: none;">
+            <h3>🔍 No products found</h3>
+            <p>Try different keywords or browse our standard categories.</p>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="store-modal-overlay" style="display: none;">
+        <div class="store-modal-card">
+            <div class="modal-header">
+                <h3>Customer Authentication</h3>
+                <button class="close-modal" id="close-login-btn">&times;</button>
+            </div>
+            <form id="login-form">
+                <div id="login-error-alert" class="alert-box alert-error" style="display: none;">
+                    Invalid email or password. Please check your credentials.
+                </div>
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" placeholder="demo@qa-platform.io" />
+                    <span class="field-validation-error" id="email-error" style="display: none;">Email is required</span>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" />
+                    <span class="field-validation-error" id="password-error" style="display: none;">Password is required</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="cancel-login-btn">Cancel</button>
+                    <button type="submit" id="login-submit-btn" class="btn-primary">Sign In</button>
+                </div>
+            </form>
+            <div class="demo-creds-hint">
+                <small>Demo Credentials: <code>demo@qa-platform.io</code> / <code>Password@123</code></small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart & Checkout Modal / Drawer -->
+    <div id="checkout-modal" class="store-modal-overlay" style="display: none;">
+        <div class="store-modal-card checkout-card">
+            <div class="modal-header">
+                <h3>🛒 Order Checkout</h3>
+                <button class="close-modal" id="close-checkout-btn">&times;</button>
+            </div>
+            <div class="checkout-body">
+                <div class="cart-items-summary" id="cart-items-list">
+                    <!-- Items listed here -->
+                </div>
+
+                <div class="promo-box">
+                    <input type="text" id="promo-input" placeholder="Enter coupon (e.g. SAVE20)" />
+                    <button id="apply-promo-btn" class="btn-secondary">Apply Code</button>
+                </div>
+                <div id="discount-badge" class="discount-badge" style="display: none;">
+                    🎉 20% OFF Applied (-$<span id="discount-amount">0.00</span>)
+                </div>
+
+                <div class="pricing-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="order-subtotal-price">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Discount:</span>
+                        <span id="order-discount-display">$0.00</span>
+                    </div>
+                    <div class="summary-row grand-total">
+                        <span>Total Payable:</span>
+                        <span id="order-total-price">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="cancel-checkout-btn">Continue Shopping</button>
+                    <button type="button" id="checkout-btn" class="btn-primary">Confirm & Pay</button>
+                </div>
+
+                <div id="order-success-banner" class="alert-box alert-success" style="display: none;">
+                    ✅ Order Placed Successfully! Order ID: <strong id="confirmed-order-id">#ORD-98234</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/target_app.js"></script>
+</body>
+</html>

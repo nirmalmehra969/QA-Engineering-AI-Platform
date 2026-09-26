@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.pytest_cache/
+
+# Databases
+*.db
+*.sqlite3
+
+# Logs & Screenshots
+*.log
+screenshots/*.png
+!screenshots/.gitkeep
+
+# Java & Maven
+target/
+*.class
+*.jar
+*.war
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Environment & OS
+.env
+.DS_Store
+Thumbs.db

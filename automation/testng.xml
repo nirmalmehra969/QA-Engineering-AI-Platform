@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ApexCart E-Commerce Regression Test Suite" verbose="1">
+    <test name="Authentication & Security Tests">
+        <classes>
+            <class name="com.qaplatform.tests.LoginTest" />
+        </classes>
+    </test>
+    <test name="Shopping Cart & Checkout Tests">
+        <classes>
+            <class name="com.qaplatform.tests.CheckoutTest" />
+        </classes>
+    </test>
+</suite>

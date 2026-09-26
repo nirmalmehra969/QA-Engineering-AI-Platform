@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS - QA Engineering AI Platform | AI-Powered QA Testing Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="dark-saas-theme">
+    <div class="app-layout">
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand-container">
+                <div class="brand-logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="#00e5ff" stroke-width="2.5"/>
+                        <path d="M21 21L16.65 16.65" stroke="#00e5ff" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="11" cy="11" r="3" fill="#3b82f6"/>
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-title">QA Engineering</span>
+                    <span class="brand-subtitle">AI Platform</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-view="dashboard-view">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Dashboard</span>
+                </button>
+                <button class="nav-item" data-view="requirements-view">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-label">Requirements Studio</span>
+                </button>
+                <button class="nav-item" data-view="traceability-view">
+                    <span class="nav-icon">🔗</span>
+                    <span class="nav-label">Traceability Matrix</span>
+                </button>
+                <button class="nav-item" data-view="testcases-view">
+                    <span class="nav-icon">📑</span>
+                    <span class="nav-label">Test Suites & Gherkin</span>
+                </button>
+                <button class="nav-item" data-view="runner-view">
+                    <span class="nav-icon">⚡</span>
+                    <span class="nav-label">Automation Runner</span>
+                </button>
+                <button class="nav-item" data-view="bugs-view">
+                    <span class="nav-icon">🐞</span>
+                    <span class="nav-label">Bug Reports & RCA</span>
+                </button>
+                <button class="nav-item" data-view="data-factory-view">
+                    <span class="nav-icon">🧬</span>
+                    <span class="nav-label">Test Data Factory</span>
+                </button>
+                <button class="nav-item" data-view="code-studio-view">
+                    <span class="nav-icon">☕</span>
+                    <span class="nav-label">Java + TestNG Studio</span>
+                </button>
+                <button class="nav-item" data-view="settings-view">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-label">Settings & Safety</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="/app/target-store" target="_blank" class="target-app-link">
+                    <span class="pulse-dot"></span>
+                    <span>Launch Target Store ↗</span>
+                </a>
+                <div class="tags-badge-container">
+                    <span class="badge-tag">AI / GenAI</span>
+                    <span class="badge-tag">Selenium</span>
+                    <span class="badge-tag">Java + TestNG</span>
+                    <span class="badge-tag">Python + Flask</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <div class="main-wrapper">
+            <!-- Top Navbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 class="view-heading" id="current-view-title">SaaS - QA Engineering AI Platform</h1>
+                </div>
+                <div class="topbar-right">
+                    <!-- AI Copilot Status Pill & Transparency Popover -->
+                    <div id="header-ai-status-pill" class="ai-provider-pill badge-ai-fallback" title="Click for AI Provider & Trust Transparency Details">
+                        <span class="ai-indicator-dot"></span>
+                        <span id="header-ai-provider-label">Offline QA Heuristic Engine</span>
+                        <span id="header-ai-trust-tag" class="ai-trust-tag">No API Required</span>
+                    </div>
+
+                    <div id="auth-header-container" class="auth-pill">
+                        <span class="status-dot"></span>
+                        <span id="header-user-name">Lead QA Architect</span>
+                        <button id="btn-auth-action" class="btn-xs btn-outline">Logout</button>
+                    </div>
+                    <button id="toggle-copilot-btn" class="btn-toggle-copilot">
+                        <span class="copilot-sparkle">✨</span>
+                        <span>AI Assistant</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dynamic Views Container -->
+            <main class="content-viewport">
+                
+                <!-- VIEW 1: DASHBOARD -->
+                <section id="dashboard-view" class="view-section active">
+                    <!-- High-Level Metric Cards with Calculation Source & Info Tooltips -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card kpi-chart-card glowing-cyan">
+                            <div class="kpi-header">
+                                <div class="kpi-label-group">
+                                    <span class="kpi-label">Test Success Rate</span>
+                                    <button class="btn-info-metric" data-metric="success-rate" title="Click to view calculation breakdown">ℹ️</button>
+                                </div>
+                                <span class="kpi-trend positive" id="kpi-success-trend">Measured</span>
+                            </div>
+                            <div class="kpi-stat-row">
+                                <span class="kpi-value" id="kpi-success-rate">85.8%</span>
+                                <div class="kpi-sub-metric-badge">
+                                    <span class="pill-draft" id="kpi-success-rate-status">Reliability Metric</span>
+                                </div>
+                            </div>
+                            <div class="kpi-progress-container">
+                                <div class="kpi-progress-bar-bg">
+                                    <div class="kpi-progress-bar-fill fill-cyan" id="progress-bar-success" style="width: 85.8%;"></div>
+                                </div>
+                                <div class="kpi-progress-scale">
+                                    <span>0%</span>
+                                    <span>50%</span>
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                            <div class="metric-calc-detail" id="kpi-success-subtext">
+                                <span class="calc-label">Data:</span> <span id="kpi-success-calc-text">Passed / Total Executed Tests</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card kpi-chart-card glowing-blue">
+                            <div class="kpi-header">
+                                <div class="kpi-label-group">
+                                    <span class="kpi-label">Requirement Coverage</span>
+                                    <button class="btn-info-metric" data-metric="req-coverage" title="Click to view scope details">ℹ️</button>
+                                </div>
+                                <span class="kpi-trend positive" id="kpi-coverage-trend">Spec Scope</span>
+                            </div>
+                            <div class="kpi-stat-row">
+                                <span class="kpi-value" id="kpi-code-coverage">53.3%</span>
+                                <div class="kpi-sub-metric-badge">
+                                    <span class="pill-draft" id="kpi-coverage-status">Coverage Metric</span>
+                                </div>
+                            </div>
+                            <div class="kpi-progress-container">
+                                <div class="kpi-progress-bar-bg">
+                                    <div class="kpi-progress-bar-fill fill-blue" id="progress-bar-coverage" style="width: 53.3%;"></div>
+                                </div>
+                                <div class="kpi-progress-scale">
+                                    <span>0%</span>
+                                    <span>50%</span>
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                            <div class="metric-calc-detail" id="kpi-coverage-subtext">
+                                <span class="calc-label">Functional:</span> <span id="kpi-coverage-calc-text">Covered User Stories • Not Bytecode/JaCoCo</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card kpi-chart-card">
+                            <div class="kpi-header">
+                                <div class="kpi-label-group">
+                                    <span class="kpi-label">Total Test Cases</span>
+                                    <button class="btn-info-metric" data-metric="test-cases" title="Click to view lifecycle breakdown">ℹ️</button>
+                                </div>
+                                <span class="kpi-pill approved-pill" id="kpi-approved-pill">✓ 11 Approved</span>
+                            </div>
+                            <div class="kpi-stat-row">
+                                <span class="kpi-value" id="kpi-total-tests">24</span>
+                                <div class="tc-lifecycle-pills" id="kpi-tc-breakdown">
+                                    <span class="pill-draft" id="pill-draft-count">9 Draft</span>
+                                    <span class="pill-review" id="pill-review-count">4 In Review</span>
+                                </div>
+                            </div>
+                            <div class="kpi-barchart-container">
+                                <svg class="kpi-barchart-svg" viewBox="0 0 240 70" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="bar-grad-cyan" x1="0" y1="1" x2="0" y2="0">
+                                            <stop offset="0%" stop-color="#023b4e" stop-opacity="0.3"/>
+                                            <stop offset="60%" stop-color="#00a8cc" stop-opacity="0.8"/>
+                                            <stop offset="100%" stop-color="#00e5ff" stop-opacity="1"/>
+                                        </linearGradient>
+                                        <linearGradient id="bar-grad-cyan-glow" x1="0" y1="1" x2="0" y2="0">
+                                            <stop offset="0%" stop-color="#00bcd4"/>
+                                            <stop offset="100%" stop-color="#00f7ff"/>
+                                        </linearGradient>
+                                        <filter id="bar-glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                                            <feMerge>
+                                                <feMergeNode in="blur"/>
+                                                <feMergeNode in="SourceGraphic"/>
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+                                    <!-- Gridlines and Y labels -->
+                                    <text x="0" y="14" class="chart-axis-label">20</text>
+                                    <line x1="20" y1="10" x2="235" y2="10" class="chart-gridline" />
+                                    
+                                    <text x="0" y="38" class="chart-axis-label">10</text>
+                                    <line x1="20" y1="34" x2="235" y2="34" class="chart-gridline" />
+                                    
+                                    <text x="0" y="62" class="chart-axis-label">0</text>
+                                    <line x1="20" y1="58" x2="235" y2="58" class="chart-gridline baseline" />
+
+                                    <!-- Bars (10 bars) -->
+                                    <rect x="25" y="44" width="13" height="14" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="46" y="32" width="13" height="26" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="67" y="38" width="13" height="20" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="88" y="22" width="13" height="36" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="109" y="28" width="13" height="30" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="130" y="16" width="13" height="42" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="151" y="24" width="13" height="34" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="172" y="12" width="13" height="46" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="193" y="20" width="13" height="38" rx="2" fill="url(#bar-grad-cyan)"/>
+                                    <rect x="214" y="2" width="14" height="56" rx="2" fill="url(#bar-grad-cyan-glow)" filter="url(#bar-glow-cyan)"/>
+                                </svg>
+                            </div>
+                            <div class="metric-calc-detail">
+                                <span class="calc-label">Source:</span> <span id="kpi-tc-source-text">Current SQLite Repository Snapshot</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card kpi-chart-card card-interactive" id="kpi-card-bugs" title="Click to inspect all active defect details & failure evidence">
+                            <div class="kpi-header">
+                                <div class="kpi-label-group">
+                                    <span class="kpi-label">Active Bugs Detected</span>
+                                    <button class="btn-info-metric" data-metric="active-bugs" title="Click to inspect defects">ℹ️</button>
+                                </div>
+                                <span class="kpi-pill bug-pill" id="kpi-bug-pill">🐞 RCA Ready</span>
+                            </div>
+                            <div class="kpi-stat-row">
+                                <span class="kpi-value kpi-bug-value" id="kpi-active-bugs">10</span>
+                                <div class="kpi-bugs-label-wrapper">
+                                    <span class="kpi-bugs-label" id="kpi-bugs-subtext">Click to inspect failure logs & RCA</span>
+                                </div>
+                            </div>
+                            <div class="kpi-barchart-container">
+                                <svg class="kpi-barchart-svg" viewBox="0 0 240 70" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="bar-grad-red" x1="0" y1="1" x2="0" y2="0">
+                                            <stop offset="0%" stop-color="#4a1515" stop-opacity="0.3"/>
+                                            <stop offset="60%" stop-color="#b91c1c" stop-opacity="0.8"/>
+                                            <stop offset="100%" stop-color="#f87171" stop-opacity="1"/>
+                                        </linearGradient>
+                                        <linearGradient id="bar-grad-red-glow" x1="0" y1="1" x2="0" y2="0">
+                                            <stop offset="0%" stop-color="#ef4444"/>
+                                            <stop offset="100%" stop-color="#ff7875"/>
+                                        </linearGradient>
+                                        <filter id="bar-glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                                            <feMerge>
+                                                <feMergeNode in="blur"/>
+                                                <feMergeNode in="SourceGraphic"/>
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+                                    <!-- Gridlines and Y labels -->
+                                    <text x="0" y="14" class="chart-axis-label">8</text>
+                                    <line x1="20" y1="10" x2="235" y2="10" class="chart-gridline" />
+                                    
+                                    <text x="0" y="38" class="chart-axis-label">4</text>
+                                    <line x1="20" y1="34" x2="235" y2="34" class="chart-gridline" />
+                                    
+                                    <text x="0" y="62" class="chart-axis-label">0</text>
+                                    <line x1="20" y1="58" x2="235" y2="58" class="chart-gridline baseline" />
+
+                                    <!-- Bars (10 bars) -->
+                                    <rect x="25" y="46" width="13" height="12" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="46" y="36" width="13" height="22" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="67" y="44" width="13" height="14" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="88" y="30" width="13" height="28" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="109" y="38" width="13" height="20" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="130" y="24" width="13" height="34" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="151" y="18" width="13" height="40" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="172" y="32" width="13" height="26" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="193" y="14" width="13" height="44" rx="2" fill="url(#bar-grad-red)"/>
+                                    <rect x="214" y="2" width="14" height="56" rx="2" fill="url(#bar-grad-red-glow)" filter="url(#bar-glow-red)"/>
+                                </svg>
+                            </div>
+                            <div class="metric-calc-detail kpi-footer-row">
+                                <span><span class="calc-label">Source:</span> Assertions & RCA</span>
+                                <button class="btn-inspect-rca" onclick="event.stopPropagation(); app.navigateView('bugs-view');">Inspect ➔</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Workflow Architecture Banner & Contextual Next Action Callout -->
+                    <div class="workflow-section-container">
+                        <div class="workflow-banner" id="dashboard-workflow-banner">
+                            <div class="workflow-step" id="wf-step-1" data-stage="1">
+                                <span class="step-num">1</span>
+                                <span class="step-text">Requirement Ingestion</span>
+                            </div>
+                            <span class="wf-arrow">→</span>
+                            <div class="workflow-step" id="wf-step-2" data-stage="2">
+                                <span class="step-num">2</span>
+                                <span class="step-text">AI Test Design & Scenarios</span>
+                            </div>
+                            <span class="wf-arrow">→</span>
+                            <div class="workflow-step" id="wf-step-3" data-stage="3">
+                                <span class="step-num">3</span>
+                                <span class="step-text">Tester Review & Approval</span>
+                            </div>
+                            <span class="wf-arrow">→</span>
+                            <div class="workflow-step" id="wf-step-4" data-stage="4">
+                                <span class="step-num">4</span>
+                                <span class="step-text">Selenium Automation Execution</span>
+                            </div>
+                            <span class="wf-arrow">→</span>
+                            <div class="workflow-step" id="wf-step-5" data-stage="5">
+                                <span class="step-num">5</span>
+                                <span class="step-text">Verified Results & RCA Bugs</span>
+                            </div>
+                        </div>
+
+                        <!-- Contextual Next Action Callout Bar -->
+                        <div class="next-action-card" id="dashboard-next-action-card">
+                            <div class="next-action-left">
+                                <div class="next-action-pulse-icon">⚡</div>
+                                <div class="next-action-content">
+                                    <span class="next-action-stage-label" id="next-action-stage-title">CURRENT STAGE: Tester Review & Approval</span>
+                                    <h4 class="next-action-description" id="next-action-desc">Review test cases and approve scenarios to execute test suite.</h4>
+                                </div>
+                            </div>
+                            <div class="next-action-right">
+                                <button class="btn-sm btn-cyan" id="btn-next-action">Review Test Cases ➔</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Test Case Generation Flow & Gherkin Editor Window with Explicit Approval Lifecycle -->
+                    <div class="editor-window-card">
+                        <div class="editor-header">
+                            <div class="editor-header-top">
+                                <div class="editor-title-group">
+                                    <span class="window-dots">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                    </span>
+                                    <h3>Test Case Generation Flow & Gherkin Editor</h3>
+                                </div>
+                                <div class="editor-header-status-pill">
+                                    <span id="scenario-status-badge" class="badge-status badge-approved">APPROVED</span>
+                                </div>
+                            </div>
+                            <div class="editor-toolbar-row">
+                                <div class="editor-select-wrapper">
+                                    <select id="dashboard-scenario-selector" class="editor-select">
+                                        <!-- Populated via JS -->
+                                    </select>
+                                </div>
+                                <div class="editor-actions">
+                                    <button class="btn-xs btn-outline" id="btn-quick-run-scenario" title="Execute this single scenario in runner">⚡ Execute Test</button>
+                                    <button class="btn-xs btn-outline" id="btn-quick-review-scenario" title="Mark scenario for peer review">⏳ In Review</button>
+                                    <button class="btn-xs btn-cyan" id="btn-quick-approve-scenario" title="Approve scenario for regression suites">✓ Approve</button>
+                                    <button class="btn-xs btn-danger-outline" id="btn-quick-reject-scenario" title="Reject scenario">✗ Reject</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Test Case Meta & Approval Audit Bar -->
+                        <div class="tc-meta-bar" id="dashboard-tc-meta-bar">
+                            <div class="tc-meta-left">
+                                <span id="scenario-status-badge" class="badge-status badge-approved">APPROVED</span>
+                                <span class="scenario-meta-divider">•</span>
+                                <span id="scenario-reviewer-info" class="scenario-meta-item">Reviewer: <strong>Lead QA Architect</strong></span>
+                                <span class="scenario-meta-divider">•</span>
+                                <span id="scenario-reviewed-at" class="scenario-meta-item">Timestamp: <strong>2026-09-21 22:30</strong></span>
+                            </div>
+                            <div class="tc-meta-right">
+                                <span id="scenario-linked-req" class="scenario-meta-item">Linked Story: <strong>#REQ-1: User Authentication Flow</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Re-Review Alert Banner if Requirement Updated -->
+                        <div id="dashboard-re-review-alert" class="re-review-alert-banner" style="display: none;">
+                            ⚠️ <strong>Re-Review Required:</strong> The linked requirement was updated to a new version. Please review Gherkin steps & expected results and re-approve.
+                        </div>
+
+                        <div class="code-editor-viewport">
+                            <pre><code id="dashboard-gherkin-display" class="language-gherkin">
+<span class="gh-keyword">Feature:</span> User Login
+  <span class="gh-keyword">Scenario:</span> Successful login with valid credentials
+    <span class="gh-step">Given</span> the user is on the login page
+    <span class="gh-step">When</span> the user enters valid username <span class="gh-string">'demo@qa-platform.io'</span> and password <span class="gh-string">'Password@123'</span>
+    <span class="gh-step">And</span> clicks on the login button
+    <span class="gh-step">Then</span> the user is redirected to the dashboard with welcome badge
+                            </code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Direct Requirement Coverage & Traceability Overview Widget on Dashboard -->
+                    <div class="dashboard-req-coverage-card">
+                        <div class="req-cov-header">
+                            <div class="req-cov-title-group">
+                                <h3>📊 Requirement Traceability & Coverage Scope</h3>
+                                <span class="badge-accent" id="req-cov-summary-badge">2 of 3 Covered (66.7%)</span>
+                            </div>
+                            <div class="req-cov-header-actions">
+                                <span class="req-cov-tag">Functional Scope Matrix</span>
+                                <button class="btn-xs btn-outline" onclick="app.navigateView('requirements-view')">+ Ingest Requirement</button>
+                            </div>
+                        </div>
+                        <div class="req-cov-progress-wrapper">
+                            <div class="req-cov-bar">
+                                <div class="req-cov-segment covered" id="req-cov-bar-covered" style="width: 66.7%;" title="Covered Requirements"></div>
+                                <div class="req-cov-segment partial" id="req-cov-bar-partial" style="width: 0%;" title="Partially Covered Requirements"></div>
+                                <div class="req-cov-segment uncovered" id="req-cov-bar-uncovered" style="width: 33.3%;" title="Uncovered Requirements"></div>
+                            </div>
+                            <div class="req-cov-legend">
+                                <span><span class="legend-dot covered"></span> Fully Covered: <strong id="legend-covered-count">2</strong></span>
+                                <span><span class="legend-dot partial"></span> Partially Covered: <strong id="legend-partial-count">0</strong></span>
+                                <span><span class="legend-dot uncovered"></span> Uncovered: <strong id="legend-uncovered-count">1</strong></span>
+                            </div>
+                        </div>
+                        <div class="req-cov-grid" id="dashboard-req-cov-list">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Recent Test Runs & Execution History with Filters, Compare & Regression Alert -->
+                    <div class="dashboard-table-card">
+                        <div class="table-header-row">
+                            <div class="table-title-group">
+                                <h3>Recent Automation Execution History</h3>
+                                <span class="table-subtitle">Live execution audit log with runner engine details and regression delta</span>
+                            </div>
+                            <div class="table-actions-group">
+                                <button id="btn-compare-runs" class="btn-sm btn-outline" disabled title="Select 2 runs using checkboxes to compare">
+                                    ⚖️ Compare Runs (0/2)
+                                </button>
+                                <button class="btn-sm btn-primary" onclick="app.navigateView('runner-view')">Run New Suite</button>
+                            </div>
+                        </div>
+
+                        <!-- Latest Regression Result Callout Banner -->
+                        <div class="regression-alert-banner" id="regression-alert-banner">
+                            <span class="regression-icon" id="regression-icon">🟢</span>
+                            <div class="regression-text-group">
+                                <strong id="regression-badge-text">Clean Regression Result</strong>
+                                <span id="regression-message-text">All assertions passing with 0 regressions detected in latest suite execution.</span>
+                            </div>
+                        </div>
+
+                        <!-- History Toolbar: Status Filters, Mode Filters, Search, Sorting -->
+                        <div class="history-toolbar">
+                            <div class="history-toolbar-left">
+                                <div class="filter-group">
+                                    <label>Status:</label>
+                                    <select id="filter-run-status" class="toolbar-select">
+                                        <option value="ALL">All Statuses</option>
+                                        <option value="PASSED">Passed (100%)</option>
+                                        <option value="DEFECTS">Defects Found</option>
+                                        <option value="QUEUED">Queued / Running</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Engine:</label>
+                                    <select id="filter-run-engine" class="toolbar-select">
+                                        <option value="ALL">All Engines</option>
+                                        <option value="Real Selenium">Real Selenium WebDriver</option>
+                                        <option value="Simulated">Simulated Engine</option>
+                                    </select>
+                                </div>
+                                <div class="search-input-wrapper">
+                                    <input type="text" id="search-run-input" class="toolbar-search" placeholder="Search suite or run ID..." />
+                                </div>
+                            </div>
+                            <div class="history-toolbar-right">
+                                <div class="filter-group">
+                                    <label>Sort By:</label>
+                                    <select id="sort-run-select" class="toolbar-select">
+                                        <option value="newest">Newest First</option>
+                                        <option value="oldest">Oldest First</option>
+                                        <option value="pass_rate_desc">Pass Rate (High to Low)</option>
+                                        <option value="duration_asc">Duration (Fastest First)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="saas-table" id="recent-runs-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px; text-align: center;">Select</th>
+                                        <th class="th-run-id">Run ID</th>
+                                        <th class="th-suite">Suite Name</th>
+                                        <th class="th-engine">Engine / Mode</th>
+                                        <th class="th-tests">Total</th>
+                                        <th class="th-passed">Passed</th>
+                                        <th class="th-failed">Failed</th>
+                                        <th class="th-dur">Duration</th>
+                                        <th class="th-job-status">Job Status</th>
+                                        <th class="th-outcome">Test Outcome</th>
+                                        <th class="th-actions">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-runs-tbody">
+                                    <!-- Populated via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIEW 2: REQUIREMENTS & AI GENERATION STUDIO -->
+                <section id="requirements-view" class="view-section">
+                    <div class="split-studio-layout">
+                        <!-- Left: Input Requirement Form -->
+                        <div class="studio-card input-card">
+                            <div class="studio-card-header">
+                                <h3>📋 Requirement / User Story Input</h3>
+                                <small>Enter requirement details or choose a sample to generate AI test cases</small>
+                            </div>
+                            <form id="requirement-form" class="studio-form">
+                                <div class="form-group">
+                                    <label>Requirement Title</label>
+                                    <input type="text" id="req-title-input" placeholder="e.g. User Authentication & Login Flow" required />
+                                </div>
+                                <div class="form-row-2">
+                                    <div class="form-group">
+                                        <label>Module / Component</label>
+                                        <select id="req-module-select">
+                                            <option value="Authentication">Authentication</option>
+                                            <option value="Catalog & Search">Catalog & Search</option>
+                                            <option value="Cart & Checkout">Cart & Checkout</option>
+                                            <option value="Payment Gateway">Payment Gateway</option>
+                                            <option value="User Profile">User Profile</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Preset Templates</label>
+                                        <select id="req-template-select">
+                                            <option value="">-- Load Sample Template --</option>
+                                            <option value="auth">E-Commerce Login & Security</option>
+                                            <option value="search">Product Search & Filter</option>
+                                            <option value="checkout">Cart & Promo Code Checkout</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>User Story & Description</label>
+                                    <textarea id="req-desc-input" rows="4" placeholder="As a customer, I want to securely log in with email and password..." required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Acceptance Criteria</label>
+                                    <textarea id="req-ac-input" rows="3" placeholder="- Valid credentials redirect to dashboard&#10;- Invalid password shows error alert&#10;- Empty required fields show validation"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Test Coverage Scope (AI Multi-Strategy)</label>
+                                    <div class="checkbox-pills">
+                                        <label class="check-pill"><input type="checkbox" name="test_type" value="Functional" checked> Functional</label>
+                                        <label class="check-pill"><input type="checkbox" name="test_type" value="Negative" checked> Negative</label>
+                                        <label class="check-pill"><input type="checkbox" name="test_type" value="Boundary" checked> Boundary</label>
+                                        <label class="check-pill"><input type="checkbox" name="test_type" value="Security" checked> Security</label>
+                                    </div>
+                                </div>
+                                <button type="submit" id="btn-generate-ai-tests" class="btn-primary btn-block">
+                                    <span class="sparkle-anim">✨</span> Generate AI Test Cases & Gherkin
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Right: AI Generated Results & Review -->
+                        <div class="studio-card review-card">
+                            <div class="studio-card-header">
+                                <div class="header-with-badge">
+                                    <h3>🤖 AI Generated Test Cases</h3>
+                                    <span class="badge-accent" id="generated-count-badge">0 Cases</span>
+                                </div>
+                                <small>Human-in-the-Loop: Review, edit Gherkin scenarios, and approve before automation</small>
+                            </div>
+                            <div id="ai-generation-loading" class="generation-spinner" style="display: none;">
+                                <div class="ai-orbit-spinner"></div>
+                                <p>AI is synthesizing scenarios, Gherkin BDD steps & test data...</p>
+                            </div>
+                            <div class="testcases-accordion" id="generated-testcases-container">
+                                <div class="empty-state-card">
+                                    <span class="empty-icon">💡</span>
+                                    <h4>No AI Test Cases Generated Yet</h4>
+                                    <p>Fill in the requirement on the left and click "Generate AI Test Cases".</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIEW 3: REQUIREMENT TRACEABILITY MATRIX -->
+                <section id="traceability-view" class="view-section">
+                    <div class="repo-toolbar">
+                        <div>
+                            <h3>🔗 End-to-End Requirement Traceability Matrix</h3>
+                            <p class="section-desc">Track requirements across linked test cases, automation runs, execution results, and open defects.</p>
+                        </div>
+                        <div class="filter-group">
+                            <select id="filter-traceability-status" class="editor-select">
+                                <option value="ALL">All Coverage Statuses</option>
+                                <option value="UNCOVERED">Uncovered Requirements Only</option>
+                                <option value="PARTIALLY_COVERED">Partially Covered Only</option>
+                                <option value="COVERED">Covered Only</option>
+                            </select>
+                            <button class="btn-sm btn-outline" id="btn-refresh-traceability">Refresh Matrix</button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-table-card">
+                        <div class="table-responsive">
+                            <table class="saas-table" id="traceability-table">
+                                <thead>
+                                    <tr>
+                                        <th>Req ID & Title</th>
+                                        <th>Module</th>
+                                        <th>Ver.</th>
+                                        <th>Linked Test Cases</th>
+                                        <th>Coverage Status</th>
+                                        <th>Latest Run Result</th>
+                                        <th>Linked Defects</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="traceability-tbody">
+                                    <!-- Populated via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIEW 4: TEST SUITES & GHERKIN REPOSITORY -->
+                <section id="testcases-view" class="view-section">
+                    <div class="repo-toolbar">
+                        <div class="filter-group">
+                            <input type="text" id="filter-tc-input" placeholder="Filter test cases..." class="search-input" />
+                            <select id="filter-tc-type" class="editor-select">
+                                <option value="ALL">All Types</option>
+                                <option value="Functional">Functional</option>
+                                <option value="Negative">Negative</option>
+                                <option value="Boundary">Boundary</option>
+                                <option value="Security">Security</option>
+                            </select>
+                            <select id="filter-tc-status" class="editor-select">
+                                <option value="ALL">All Statuses</option>
+                                <option value="APPROVED">Approved Only</option>
+                                <option value="DRAFT">Draft Only</option>
+                            </select>
+                        </div>
+                        <div class="repo-actions">
+                            <button class="btn-sm btn-outline" id="btn-export-gherkin-all">Export .feature</button>
+                            <button class="btn-sm btn-primary" onclick="app.navigateView('runner-view')">Run Selected Suites ⚡</button>
+                        </div>
+                    </div>
+
+                    <div class="testcase-cards-list" id="testcases-full-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </section>
+
+                <!-- VIEW 5: AUTOMATION RUNNER STUDIO (ASYNC QUEUE) -->
+                <section id="runner-view" class="view-section">
+                    <div class="runner-grid">
+                        <div class="runner-controls-card">
+                            <h3>⚡ Asynchronous Automation Runner</h3>
+                            <p class="section-desc">Execute approved test cases against the Target Web Application with real Selenium WebDriver and async queueing.</p>
+
+                            <div class="form-group">
+                                <label>Target Base URL (SSRF Protected)</label>
+                                <div class="url-input-wrapper">
+                                    <input type="text" id="target-url-input" value="http://127.0.0.1:5000/app/target-store" />
+                                    <button class="btn-xs btn-outline" onclick="window.open(document.getElementById('target-url-input').value, '_blank')">Preview ↗</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Execution Suite</label>
+                                <select id="runner-suite-select" class="form-control">
+                                    <option value="all">Full Regression Suite (All Approved Tests)</option>
+                                    <option value="auth">Authentication & Security Suite</option>
+                                    <option value="search">Catalog & Search Suite</option>
+                                    <option value="checkout">Shopping Cart & Checkout Suite</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Execution Engine</label>
+                                <div class="radio-pill-group">
+                                    <label><input type="radio" name="exec_mode" value="Selenium" checked> Real Selenium WebDriver (Chrome Headless)</label>
+                                    <label><input type="radio" name="exec_mode" value="Simulated"> Simulated (In-Memory Engine)</label>
+                                </div>
+                                <small class="field-caption">Environment: Chrome Headless (v124) • Windows 64-bit • Target: Localhost DOM</small>
+                            </div>
+
+                            <div class="runner-action-row">
+                                <button id="btn-start-automation" class="btn-primary btn-block btn-lg">
+                                    🚀 Enqueue Automation Run
+                                </button>
+                                <button id="btn-cancel-automation" class="btn-outline btn-lg" style="display: none; color: #ef4444; border-color: #ef4444;">
+                                    Cancel Run
+                                </button>
+                            </div>
+
+                            <!-- Live Async Progress Box -->
+                            <div class="execution-progress-box" id="execution-progress-card" style="display: none;">
+                                <div class="progress-bar-wrapper">
+                                    <div class="progress-bar-fill" id="run-progress-fill" style="width: 0%;"></div>
+                                </div>
+                                <div class="progress-stats">
+                                    <span id="run-progress-status">Queued in background worker...</span>
+                                    <span id="run-progress-percentage">0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Console Terminal -->
+                        <div class="terminal-card">
+                            <div class="terminal-header">
+                                <div class="terminal-title">
+                                    <span class="term-icon">📟</span>
+                                    <span>Real-Time WebDriver Console</span>
+                                </div>
+                                <div class="terminal-actions">
+                                    <button class="btn-xs btn-outline" id="btn-clear-terminal">Clear</button>
+                                    <button class="btn-xs btn-outline" id="btn-download-logs">Download Logs</button>
+                                </div>
+                            </div>
+                            <div class="terminal-body" id="runner-terminal-logs">
+                                <div class="log-line log-info">[System] Test Runner Engine Initialized. Ready for background execution.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Test Run Results Summary -->
+                    <div class="run-results-panel" id="latest-run-results-panel" style="display: none;">
+                        <div class="results-header">
+                            <h3>Execution Results Breakdown</h3>
+                            <div id="latest-run-badges" class="run-badges"></div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="saas-table">
+                                <thead>
+                                    <tr>
+                                        <th>Status</th>
+                                        <th>Test Case</th>
+                                        <th>Duration</th>
+                                        <th>Details</th>
+                                        <th>Evidence</th>
+                                        <th>AI RCA</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="latest-results-tbody">
+                                    <!-- Results rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIEW 6: BUG REPORTS & RCA -->
+                <section id="bugs-view" class="view-section">
+                    <div class="bugs-header">
+                        <div>
+                            <h3>🐞 AI-Assisted Bug Reports & Root Cause Analysis</h3>
+                            <p class="section-desc">Automated failure triage, severity assessment, stack trace breakdown, and code fix suggestions.</p>
+                        </div>
+                        <div class="bugs-header-actions">
+                            <button class="btn-sm btn-outline" id="btn-export-all-bugs">Export All (Jira / GitHub)</button>
+                        </div>
+                    </div>
+
+                    <div class="repo-toolbar bug-filter-bar">
+                        <div class="filter-group">
+                            <label style="font-size:0.8rem;color:var(--text-muted);margin-right:4px;">Severity:</label>
+                            <select id="filter-bug-severity" class="editor-select">
+                                <option value="ALL">All Severities</option>
+                                <option value="CRITICAL">Critical</option>
+                                <option value="MAJOR">Major</option>
+                                <option value="MINOR">Minor</option>
+                            </select>
+
+                            <label style="font-size:0.8rem;color:var(--text-muted);margin-left:12px;margin-right:4px;">Defect Status:</label>
+                            <select id="filter-bug-status" class="editor-select">
+                                <option value="ALL">All Statuses</option>
+                                <option value="OPEN">Open Defects Only</option>
+                                <option value="RESOLVED">Resolved Defects Only</option>
+                            </select>
+                        </div>
+                        <div class="bug-count-pill" id="bug-filter-count-badge">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="bugs-grid" id="bugs-container">
+                        <!-- Rendered by JS -->
+                    </div>
+                </section>
+
+                <!-- VIEW 7: TEST DATA FACTORY -->
+                <section id="data-factory-view" class="view-section">
+                    <div class="data-factory-header">
+                        <h3>🧬 Synthetic QA Test Data Factory</h3>
+                        <p class="section-desc">Instant generation of positive/negative inputs, boundary values, security payloads, and realistic profiles.</p>
+                    </div>
+
+                    <div class="data-factory-grid">
+                        <div class="data-card">
+                            <div class="data-card-header">
+                                <h4>📧 Email Validation Matrices</h4>
+                                <button class="btn-xs btn-outline" onclick="app.copyDataset('email')">Copy All</button>
+                            </div>
+                            <div class="data-card-body" id="email-data-body"></div>
+                        </div>
+
+                        <div class="data-card">
+                            <div class="data-card-header">
+                                <h4>🔢 Numeric & Currency Boundaries</h4>
+                                <button class="btn-xs btn-outline" onclick="app.copyDataset('numbers')">Copy All</button>
+                            </div>
+                            <div class="data-card-body" id="numbers-data-body"></div>
+                        </div>
+
+                        <div class="data-card">
+                            <div class="data-card-header">
+                                <h4>🛡️ Security & Injection Vectors</h4>
+                                <button class="btn-xs btn-outline" onclick="app.copyDataset('security')">Copy All</button>
+                            </div>
+                            <div class="data-card-body" id="security-data-body"></div>
+                        </div>
+
+                        <div class="data-card full-span">
+                            <div class="data-card-header">
+                                <h4>👥 Synthetic User Profiles & Mock Payment Cards</h4>
+                                <button class="btn-xs btn-primary" id="btn-regenerate-profiles">⚡ Generate New Batch</button>
+                            </div>
+                            <div class="data-card-body" id="profiles-data-body"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIEW 8: JAVA + TESTNG CODE STUDIO -->
+                <section id="code-studio-view" class="view-section">
+                    <div class="code-studio-header">
+                        <div>
+                            <h3>☕ Java + Selenium + TestNG Code Studio</h3>
+                            <p class="section-desc">Export enterprise-ready Page Object Model (POM) test classes, Maven POM, and PyTest scripts.</p>
+                        </div>
+                        <div class="code-tab-buttons">
+                            <button class="code-tab active" data-tab="java-test">EcommerceRegressionTest.java</button>
+                            <button class="code-tab" data-tab="java-pom">LoginPage.java (POM)</button>
+                            <button class="code-tab" data-tab="maven-pom">pom.xml</button>
+                            <button class="code-tab" data-tab="python-pytest">test_suite.py (PyTest)</button>
+                        </div>
+                    </div>
+
+                    <div class="code-editor-viewport full-height">
+                        <div class="code-toolbar">
+                            <span id="active-code-filename" class="code-filename">EcommerceRegressionTest.java</span>
+                            <button class="btn-xs btn-cyan" id="btn-copy-code">Copy Code</button>
+                        </div>
+                        <pre><code id="code-studio-display" class="language-java">
+// Loading Java TestNG Code...
+                        </code></pre>
+                    </div>
+                </section>
+
+                <!-- VIEW 9: SETTINGS & SAFETY -->
+                <section id="settings-view" class="view-section">
+                    <div class="settings-card">
+                        <h3>⚙️ Platform, Security & AI Model Configuration</h3>
+                        <form id="settings-form" class="settings-form">
+                            <div class="form-group">
+                                <label>AI Inference Engine</label>
+                                <select id="setting-ai-provider" class="form-control">
+                                    <option value="hybrid">Hybrid Engine (Gemini + Offline QA Heuristics)</option>
+                                    <option value="gemini">Google Gemini API</option>
+                                    <option value="heuristic">Offline Heuristic Engine Only</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Store Base URL</label>
+                                <input type="text" id="setting-base-url" value="http://127.0.0.1:5000/app/target-store" />
+                            </div>
+                            <div class="form-group">
+                                <label>Allowed Target Domains (SSRF Whitelist)</label>
+                                <input type="text" id="setting-allowed-domains" value="localhost, 127.0.0.1, 0.0.0.0, 192.168." />
+                            </div>
+                            <div class="form-group">
+                                <label>Per-Test Timeout (Seconds)</label>
+                                <input type="number" id="setting-test-timeout" value="15" min="5" max="60" />
+                            </div>
+                            <button type="submit" class="btn-primary">Save Settings</button>
+                        </form>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- Right Side AI Assistant Copilot Panel -->
+        <aside class="ai-assistant-panel" id="ai-assistant-panel">
+            <div class="copilot-header">
+                <div class="copilot-brand">
+                    <span class="copilot-sparkle-large">✨</span>
+                    <div>
+                        <h4>AI Assistant</h4>
+                        <small>QA Engineering Copilot</small>
+                    </div>
+                </div>
+                <button class="copilot-close-btn" id="close-copilot-btn">&times;</button>
+            </div>
+
+            <div class="copilot-quick-prompts">
+                <button class="quick-chip" data-prompt="Generate Gherkin steps for user checkout">Gherkin for Checkout</button>
+                <button class="quick-chip" data-prompt="Suggest edge cases for login and password validation">Login Edge Cases</button>
+                <button class="quick-chip" data-prompt="Explain how Selenium handles element timeouts">Selenium Timeouts</button>
+            </div>
+
+            <div class="copilot-messages" id="copilot-messages">
+                <div class="copilot-msg ai-msg">
+                    <div class="msg-avatar">AI:</div>
+                    <div class="msg-bubble">
+                        I've analyzed the user stories and test suites. I can help refine Gherkin scenarios, suggest security attack vectors, or explain failure root causes. How can I assist you?
+                    </div>
+                </div>
+            </div>
+
+            <div class="copilot-footer">
+                <form id="copilot-form" class="copilot-input-form">
+                    <input type="text" id="copilot-input" placeholder="Ask AI Copilot for test advice or Gherkin..." autocomplete="off" />
+                    <button type="submit" class="copilot-send-btn">➔</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Screenshot Modal -->
+    <div id="screenshot-modal" class="saas-modal-overlay" style="display: none;">
+        <div class="saas-modal-card large-modal">
+            <div class="modal-header">
+                <h3 id="screenshot-modal-title">📸 Failure Evidence Screenshot</h3>
+                <button class="close-modal" id="close-screenshot-btn">&times;</button>
+            </div>
+            <div class="modal-body-scroll" id="screenshot-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Edit Test Case Modal -->
+    <div id="edit-tc-modal" class="saas-modal-overlay" style="display: none;">
+        <div class="saas-modal-card">
+            <div class="modal-header">
+                <h3>Edit Test Case & Gherkin Scenario</h3>
+                <button class="close-modal" id="close-edit-tc-btn">&times;</button>
+            </div>
+            <form id="edit-tc-form" class="studio-form">
+                <input type="hidden" id="edit-tc-id" />
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="edit-tc-title" required />
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="edit-tc-type">
+                            <option value="Functional">Functional</option>
+                            <option value="Negative">Negative</option>
+                            <option value="Boundary">Boundary</option>
+                            <option value="Security">Security</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select id="edit-tc-priority">
+                            <option value="Critical">Critical</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Gherkin BDD Scenario</label>
+                    <textarea id="edit-tc-gherkin" rows="6" class="code-font"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Expected Result</label>
+                    <textarea id="edit-tc-expected" rows="2"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="cancel-edit-tc-btn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Run Comparison Modal -->
+    <div id="modal-run-comparison" class="saas-modal-overlay" style="display: none;">
+        <div class="saas-modal-card large-modal">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-badge-icon">⚖️</span>
+                    <div>
+                        <h3 id="compare-modal-title">Automation Run Comparison & Diff Inspector</h3>
+                        <p class="modal-subtitle">Side-by-side delta between two test runs</p>
+                    </div>
+                </div>
+                <button class="close-modal" id="close-compare-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body-scroll" id="compare-modal-body">
+                <!-- Comparison Cards and Diff Table populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Defect Details & Evidence Modal -->
+    <div id="modal-defect-details" class="saas-modal-overlay" style="display: none;">
+        <div class="saas-modal-card large-modal">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-badge-icon">🐞</span>
+                    <div>
+                        <h3 id="defect-modal-title">Defect Details & Failure Evidence Inspection</h3>
+                        <p class="modal-subtitle" id="defect-modal-subtitle">All active failure stack traces, assertion deltas, screenshots & AI RCAs</p>
+                    </div>
+                </div>
+                <button class="close-modal" id="close-defect-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body-scroll" id="defect-modal-body">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Case Approval & Review Modal -->
+    <div id="modal-tc-approval" class="saas-modal-overlay" style="display: none;">
+        <div class="saas-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-badge-icon">✍️</span>
+                    <div>
+                        <h3>Test Case Approval & Lifecycle Review</h3>
+                        <p class="modal-subtitle" id="approval-modal-tc-title">Scenario review and audit trail</p>
+                    </div>
+                </div>
+                <button class="close-modal" id="close-tc-approval-btn">&times;</button>
+            </div>
+            <form id="tc-approval-form" class="studio-form">
+                <input type="hidden" id="approval-tc-id" />
+                <div class="form-group">
+                    <label>Approval Status</label>
+                    <select id="approval-tc-status" class="editor-select">
+                        <option value="APPROVED">APPROVED (Verified for Automation)</option>
+                        <option value="IN_REVIEW">IN_REVIEW (Needs QA Peer Inspection)</option>
+                        <option value="DRAFT">DRAFT (Work in progress)</option>
+                        <option value="REJECTED">REJECTED (Does not meet acceptance criteria)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Reviewer Name</label>
+                    <input type="text" id="approval-tc-reviewer" value="Lead QA Architect" required />
+                </div>
+                <div class="form-group">
+                    <label>Review Notes & Sign-off Comments</label>
+                    <textarea id="approval-tc-notes" rows="3" placeholder="e.g. Verified BDD steps, selector locators and assertions against acceptance criteria..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="cancel-tc-approval-btn">Cancel</button>
+                    <button type="submit" class="btn-primary">Update Approval Status</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Metric Calculation Info Modal -->
+    <div id="modal-metric-info" class="saas-modal-overlay" style="display: none;">
+        <div class="saas-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-badge-icon">📐</span>
+                    <div>
+                        <h3 id="metric-info-title">Metric Calculation & Source Transparency</h3>
+                        <p class="modal-subtitle">Explanation of methodology, datasets, and time periods</p>
+                    </div>
+                </div>
+                <button class="close-modal" id="close-metric-info-btn">&times;</button>
+            </div>
+            <div class="modal-body-scroll" id="metric-info-body">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Copilot Status & Trust Modal -->
+    <div id="modal-ai-trust" class="saas-modal-overlay" style="display: none;">
+        <div class="saas-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-badge-icon">🤖</span>
+                    <div>
+                        <h3>AI Engine Telemetry & Trust Level</h3>
+                        <p class="modal-subtitle">Real-time status of the QA Generation & Chat Copilot</p>
+                    </div>
+                </div>
+                <button class="close-modal" id="close-ai-trust-btn">&times;</button>
+            </div>
+            <div class="modal-body-scroll" id="ai-trust-body">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/ai_assistant.js"></script>
+    <script src="/static/js/test_runner.js"></script>
+</body>
+</html>
