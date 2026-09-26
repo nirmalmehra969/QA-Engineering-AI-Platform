@@ -8,6 +8,9 @@
 
 An enterprise-grade, SaaS-style **AI-Powered Quality Assurance Platform** that accelerates manual and automated testing workflows with AI requirement analysis, Human-in-the-Loop review & approval, real Selenium browser automation, synthetic test data generation, async queue execution, and AI Root Cause Analysis (RCA) defect reporting.
 
+## 🚀 Live Demo
+[**https://qa-engineering-ai-platform.onrender.com**](https://qa-engineering-ai-platform.onrender.com)
+
 ---
 
 ## 🌟 Key Highlights & Capabilities
